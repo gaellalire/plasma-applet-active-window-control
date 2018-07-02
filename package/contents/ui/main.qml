@@ -35,7 +35,8 @@ Item {
     property double widthForHorizontalPanel: (Screen.width * horizontalScreenWidthPercent + plasmoid.configuration.widthFineTuning) - ((!controlButtonsArea.visible && buttonsStandalone && plasmoid.configuration.buttonsDynamicWidth) ? controlButtonsArea.width : 0)
     anchors.fill: parent
     Layout.fillWidth: plasmoid.configuration.autoFillWidth
-    Layout.preferredWidth: autoFillWidth ? -1 : (vertical ? parent.width : (widthForHorizontalPanel > 0 ? widthForHorizontalPanel : 0.0001))
+    Layout.preferredWidth: windowTitleText.width + 20
+    // autoFillWidth ? -1 : (vertical ? parent.width : (widthForHorizontalPanel > 0 ? widthForHorizontalPanel : 0.0001))
     Layout.minimumWidth: Layout.preferredWidth
     Layout.maximumWidth: Layout.preferredWidth
     Layout.preferredHeight: parent === null ? 0 : vertical ? Math.min(theme.defaultFont.pointSize * 4, parent.width) : parent.height
@@ -305,13 +306,13 @@ Item {
                 property double computedWidth: (limitTextWidth ? (implicitWidth > textWidthLimit ? textWidthLimit : implicitWidth) : properWidth) - activeWindowListView.buttonsBetweenAddition
 
                 anchors.left: parent.left
-                anchors.leftMargin: windowIconOnTheRight ? 0 : iconMarginForAnchor + iconAndTextSpacing + activeWindowListView.buttonsBetweenAddition
+                anchors.leftMargin: 10
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 verticalAlignment: Text.AlignVCenter
                 text: plasmoid.configuration.noWindowText
                 wrapMode: Text.Wrap
-                width: computedWidth
+               // width: computedWidth
                 elide: noElide ? Text.ElideNone : Text.ElideRight
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize

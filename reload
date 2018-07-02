@@ -1,0 +1,4 @@
+plasmapkg2 -u package
+killall plasmashell
+kstart5 plasmashell
+
